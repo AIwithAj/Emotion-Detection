@@ -8,7 +8,7 @@ __version__ = "0.0.0"
 
 REPO_NAME = "Emotion-Detection"
 AUTHOR_USER_NAME = "AIwithAj"
-SRC_REPO = "Emotion-Detecton"
+SRC_REPO = "Emotion_Detecton"
 AUTHOR_EMAIL = "dancerworld60@gmail.com"
 
 setuptools.setup(

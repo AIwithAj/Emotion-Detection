@@ -5,7 +5,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s]: %(message)s:')
 
 
-project_name = "Emotion-Detecton"
+project_name = "Emotion_Detecton"
 
 list_of_files = [
     ".github/workflows/.gitkeep",

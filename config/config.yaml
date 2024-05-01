@@ -1,0 +1,8 @@
+artifacts_root: artifacts
+
+# These are the constants that we are not going to change
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  push_URL: r'C:\Users\lenovo\Desktop\Emotion-Detection\temp\Emotion.zip'
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion

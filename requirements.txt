@@ -16,4 +16,7 @@ types-PyYAML
 scipy
 Flask
 Flask-Cors
+pymongo==4.2.0
+python-dotenv==0.21.0
+pip install pymongo[srv]
 -e .

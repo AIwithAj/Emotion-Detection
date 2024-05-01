@@ -7,11 +7,11 @@
 
 ## Workflows
 
-1. Update config.yaml
+1. Update config.yaml								    # storing the constants
 2. Update secrets.yaml [Optional]
-3. Update params.yaml
-4. Update the entity
-5. Update the configuration manager in src config
+3. Update params.yaml                        	    	# storing the parameters constants
+4. Update the entity     								# output for the next component
+5. Update the configuration manager in src config      # here we are creating paths (merging config and entity)
 6. Update the components
 7. Update the pipeline 
 8. Update the main.py
