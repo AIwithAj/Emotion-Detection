@@ -122,6 +122,7 @@ class Training:
         wandb.login(relogin=True)
         run = wandb.init(
             project = "Emotion",
+            name="Trainer"
         )
 
         # model_checkpoint = WandbModelCheckpoint(

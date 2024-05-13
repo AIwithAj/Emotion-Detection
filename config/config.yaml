@@ -18,3 +18,4 @@ training:
   root_dir: artifacts/training
   model_chkpt: artifacts/training/ResNet50
   trained_model_path: artifacts/training/model.h5
+

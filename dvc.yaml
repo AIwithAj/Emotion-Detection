@@ -1,0 +1,57 @@
+stages:
+  data_ingestion:
+
+    cmd: python src/Emotion_Detection/pipeline/stage_01_data_ingestion.py
+    deps:
+      - src/Emotion_Detection/pipeline/stage_01_data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/train
+      - artifacts/data_ingestion/test
+
+
+  prepare_base_model:
+    cmd: python src/Emotion_Detection/pipeline/stage02_preparebasemodel.py
+    deps:
+      - src/Emotion_Detection/pipeline/stage02_preparebasemodel.py
+      - config/config.yaml
+    params:
+      - IMAGE_SIZE
+      - INCLUDE_TOP
+      - CLASSES
+      - WEIGHTS
+    outs:
+      - artifacts/prepare_base_model
+
+
+  training:
+    cmd: python src/Emotion_Detection/pipeline/stage03_model_train.py
+    deps:
+      - src/Emotion_Detection/pipeline/stage03_model_train.py
+      - config/config.yaml
+      - artifacts/data_ingestion/train
+      - artifacts/data_ingestion/test
+      - artifacts/prepare_base_model
+    params:
+      - IMAGE_SIZE
+      - EPOCHS
+      - BATCH_SIZE
+      - AUGMENTATION
+    outs:
+      - artifacts/training/model.h5
+
+
+  evaluation:
+    cmd: python src/Emotion_Detection/pipeline/stage_04_model_evaluation.py
+    deps: 
+      - src/Emotion_Detection/pipeline/stage_04_model_evaluation.py
+      - config/config.yaml
+      - artifacts/data_ingestion/train
+      - artifacts/data_ingestion/test
+      - artifacts/training/model.h5
+    params:
+      - IMAGE_SIZE
+      - BATCH_SIZE
+    metrics:
+    - scores.json:
+        cache: false
