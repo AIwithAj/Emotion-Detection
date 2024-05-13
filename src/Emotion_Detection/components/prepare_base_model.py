@@ -7,6 +7,15 @@ from pathlib import Path
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import BatchNormalization, Dropout, Flatten, Dense
 
+import os
+import urllib.request as request
+from zipfile import ZipFile
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import BatchNormalization, Dropout, Flatten, Dense
+from tensorflow.keras.metrics import CategoricalAccuracy, FalsePositives, FalseNegatives, TruePositives, TrueNegatives, Precision, Recall, AUC, binary_accuracy
+
+
+import tensorflow as tf
 
 class PrepareBaseModel:
     def __init__(self, config: PrepareBaseModelConfig):
@@ -43,11 +52,12 @@ class PrepareBaseModel:
                     ])
         print('befor compilation')
         full_model.summary()
-        
+        metrics = [TruePositives(name='tp'),FalsePositives(name='fp'), TrueNegatives(name='tn'), FalseNegatives(name='fn'), 
+            CategoricalAccuracy(name='accuracy'), Precision(name='precision'), Recall(name='recall'), AUC(name='auc')]
         full_model.compile(
             optimizer='adam',
             loss=tf.keras.losses.CategoricalCrossentropy(),
-            metrics=["accuracy"]
+            metrics=metrics
         )
 
         full_model.summary()

@@ -1,6 +1,8 @@
 from src.Emotion_Detection import logger
 from src.Emotion_Detection.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from src.Emotion_Detection.pipeline.stage02_preparebasemodel import PrepareBaseModelTrainingPipeline
+from src.Emotion_Detection.pipeline.stage03_model_train import ModelTrainingPipeline
+
 
 
 
@@ -31,3 +33,14 @@ except Exception as e:
         logger.exception(e)
         raise e
 
+
+STAGE_NAME = "Training"
+try: 
+   logger.info(f"*******************")
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+   model_trainer = ModelTrainingPipeline()
+   model_trainer.main()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
