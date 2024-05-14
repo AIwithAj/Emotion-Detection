@@ -165,7 +165,7 @@ class Training:
         history=self.model.fit(
             self.train_generator,
             epochs=self.config.params_epochs,
-            steps_per_epoch=1,
+            steps_per_epoch=2,
             validation_steps=1,
             validation_data=self.test_generator,
             class_weight=self.class_weights_dict,
